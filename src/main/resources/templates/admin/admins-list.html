@@ -1,0 +1,25 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Admins</title>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/css/doctor.css">
+<!--===============================================================================================-->
+</head>
+<body>
+
+<h3 style="text-align: center; color: #5d58f9; font-size: 40px">Admins Directory</h3>
+<hr>
+
+<table>
+	<tr>
+		<th>Admin</th>
+		<th>Admin's email</th>
+	</tr>
+	<tr th:each="admin : ${admins}">
+		<td th:text="${admin.lastName} + ' ' +  ${admin.firstName}"/>
+		<td th:text="${admin.email}"/>
+	</tr>
+</table>
+
+</body>
+</html>

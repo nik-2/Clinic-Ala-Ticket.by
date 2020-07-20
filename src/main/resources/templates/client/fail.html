@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Failure</title>
+</head>
+<body>
+
+<div class="container">
+    <h3>Failure</h3>
+    <hr>
+    <p class="h4 mb-4">Ooops...Something went wrong...</p>
+
+    <div th:object="${ticket}">
+
+        <div style="color: red" th:if="${ticket} == null and ${check.equals('0')}">
+
+            We are not found ticket...
+
+        </div>
+
+        <div style="color: red" th:if="${check.equals('1')}">
+
+            You are can't choose this ticket, because in this day you have another one ticket to this doctor...
+
+        </div>
+
+    </div>
+
+</div>
+</body>
+</html>

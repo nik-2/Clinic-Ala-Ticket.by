@@ -1,0 +1,29 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Doctors</title>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/css/doctor.css">
+<!--===============================================================================================-->
+</head>
+<body>
+
+<h3 style="text-align: center; color: #5d58f9; font-size: 40px">Doctors Directory</h3>
+<hr>
+
+<table>
+	<tr>
+		<th>Doctor</th>
+		<th>Doctor's email</th>
+		<th>Speciality</th>
+		<th>Selection</th>
+	</tr>
+	<tr th:each="doctor : ${doctors}">
+		<td th:text="${doctor.lastName} + ' ' +  ${doctor.firstName}"/>
+		<td th:text="${doctor.email}"/>
+		<td th:text="${doctor.speciality.name}"/>
+		<td><a th:href="@{/client/day(id=${doctor.id})}">Select</a> </td>
+	</tr>
+</table>
+
+</body>
+</html>

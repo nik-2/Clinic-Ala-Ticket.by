@@ -1,0 +1,31 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Tickets</title>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/css/doctor.css">
+<!--===============================================================================================-->
+</head>
+<body>
+
+<h3 style="text-align: center; color: #5d58f9; font-size: 40px">My Tickets</h3>
+<hr>
+
+<table>
+	<tr>
+		<th>№</th>
+		<th>Client</th>
+		<th>Client's email</th>
+		<th>Day</th>
+		<th>Service time</th>
+	</tr>
+	<tr th:each="ticket : ${tickets}">
+		<td th:text="${ticket.getId()}"/>
+		<td th:text="${ticket.getClient().getLastName()} + ' ' + ${ticket.getClient().getFirstName()}"/>
+		<td th:text="${ticket.getClient().getEmail()}"/>
+		<td th:text="${ticket.getDay().getDate()}"/>
+		<td th:text="${ticket.getTime().getTime()}"/>
+	</tr>
+</table>
+
+</body>
+</html>

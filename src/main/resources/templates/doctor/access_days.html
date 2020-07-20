@@ -1,0 +1,263 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:v="urn:schemas-microsoft-com:vml"
+      xmlns:o="urn:schemas-microsoft-com:office:office">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+    <title>Days</title>
+
+    <script src="/js/jquery-1.3.min.js" type="text/javascript"></script>
+    <script src="/js/coda.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="/css/master.css" media="screen" charset="utf-8"/>
+    <link rel="stylesheet" type="text/css" href="/css/dop_doc.css" media="screen" charset="utf-8"/>
+
+</head>
+
+<body>
+<h1>
+    <div th:text="${month}"></div>
+</h1>
+<table cellspacing="0">
+    <thead>
+    <tr>
+        <th>Mon</th>
+        <th>Tue</th>
+        <th>Wed</th>
+        <th>Thu</th>
+        <th>Fri</th>
+        <th>Sat</th>
+        <th>Sun</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <div th:unless="${start == 0}">
+            <td class="padding" th:colspan="${start}"></td>
+        </div>
+        <div th:each="day : ${days1}">
+            <div th:if="${day.getDate().getDayOfWeek().toString() == 'SATURDAY'} or ${day.getDate().getDayOfWeek().toString() == 'SUNDAY'}">
+                <td class="date_has_event" style="background-position: 81px 0px;"
+                    onmouseover="this.style.backgroundPosition='81px -81px';"
+                    onmouseout="this.style.backgroundPosition='81px 0';">
+                    <div th:text="${day.getDate().getDayOfMonth()}"/>
+                    <div class="events">
+                        <ul>
+                            <li>
+                                <span class="title">Day off</span>
+                                <span class="desc">The clinic is not working on this day.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </td>
+            </div>
+            <div th:unless="${day.getDate().getDayOfWeek().toString() == 'SATURDAY'} or ${day.getDate().getDayOfWeek().toString() == 'SUNDAY'}">
+                <div th:unless="${tickets.get(day).size() == 0}">
+                    <td>
+                        <a th:href="@{/doctor/tickets(dayId=${day.getId()})}"
+                           th:text="${day.getDate().getDayOfMonth()}"/>
+                    </td>
+                </div>
+                <div th:if="${tickets.get(day).size() == 0}">
+                    <td class="date_has_event">
+                        <div th:text="${day.getDate().getDayOfMonth()}"/>
+                        <div class="events">
+                            <ul>
+                                <li>
+                                    <span class="title">Tickets</span>
+                                    <span class="desc">
+                                        No tickets
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                </div>
+            </div>
+        </div>
+    </tr>
+    <tr>
+        <div th:each="day : ${days2}">
+            <div th:if="${day.getDate().getDayOfWeek().toString() == 'SATURDAY'} or ${day.getDate().getDayOfWeek().toString() == 'SUNDAY'}">
+                <td class="date_has_event" style="background-position: 81px 0px;"
+                    onmouseover="this.style.backgroundPosition='81px -81px';"
+                    onmouseout="this.style.backgroundPosition='81px 0';">
+                    <div th:text="${day.getDate().getDayOfMonth()}"/>
+                    <div class="events">
+                        <ul>
+                            <li>
+                                <span class="title">Day off</span>
+                                <span class="desc">The clinic is not working on this day.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </td>
+            </div>
+            <div th:unless="${day.getDate().getDayOfWeek().toString() == 'SATURDAY'} or ${day.getDate().getDayOfWeek().toString() == 'SUNDAY'}">
+                <div th:unless="${tickets.get(day).size() == 0}">
+                    <div><a th:text="${day.getDate().getDayOfMonth()}"
+                            th:href="@{/doctor/tickets(dayId=${day.getId()})}"/>
+                    </div>
+                </div>
+                <div th:if="${tickets.get(day).size() == 0}">
+                    <td class="date_has_event">
+                        <div th:text="${day.getDate().getDayOfMonth()}"/>
+                        <div class="events">
+                            <ul>
+                                <li>
+                                    <span class="title">Tickets</span>
+                                    <span class="desc">
+                                        No tickets
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                </div>
+            </div>
+        </div>
+    </tr>
+    <tr>
+        <div th:each="day : ${days3}">
+            <div th:if="${day.getDate().getDayOfWeek().toString() == 'SATURDAY'} or ${day.getDate().getDayOfWeek().toString() == 'SUNDAY'}">
+                <td class="date_has_event" style="background-position: 81px 0px;"
+                    onmouseover="this.style.backgroundPosition='81px -81px';"
+                    onmouseout="this.style.backgroundPosition='81px 0';">
+                    <div th:text="${day.getDate().getDayOfMonth()}"/>
+                    <div class="events">
+                        <ul>
+                            <li>
+                                <span class="title">Day off</span>
+                                <span class="desc">The clinic is not working on this day.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </td>
+            </div>
+            <div th:unless="${day.getDate().getDayOfWeek().toString() == 'SATURDAY'} or ${day.getDate().getDayOfWeek().toString() == 'SUNDAY'}">
+                <div th:unless="${tickets.get(day).size() == 0}">
+                    <div><a th:text="${day.getDate().getDayOfMonth()}"
+                            th:href="@{/doctor/tickets(dayId=${day.getId()})}"/>
+                    </div>
+                </div>
+                <div th:if="${tickets.get(day).size() == 0}">
+                    <td class="date_has_event">
+                        <div th:text="${day.getDate().getDayOfMonth()}"/>
+                        <div class="events">
+                            <ul>
+                                <li>
+                                    <span class="title">Tickets</span>
+                                    <span class="desc">
+                                        No tickets
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                </div>
+            </div>
+        </div>
+    </tr>
+    <tr>
+        <div th:each="day : ${days4}">
+            <div th:if="${day.getDate().getDayOfWeek().toString() == 'SATURDAY'} or ${day.getDate().getDayOfWeek().toString() == 'SUNDAY'}">
+                <td class="date_has_event" style="background-position: 81px 0px;"
+                    onmouseover="this.style.backgroundPosition='81px -81px';"
+                    onmouseout="this.style.backgroundPosition='81px 0';">
+                    <div th:text="${day.getDate().getDayOfMonth()}"/>
+                    <div class="events">
+                        <ul>
+                            <li>
+                                <span class="title">Day off</span>
+                                <span class="desc">The clinic is not working on this day.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </td>
+            </div>
+            <div th:unless="${day.getDate().getDayOfWeek().toString() == 'SATURDAY'} or ${day.getDate().getDayOfWeek().toString() == 'SUNDAY'}">
+                <div th:unless="${tickets.get(day).size() == 0}">
+                    <div><a th:text="${day.getDate().getDayOfMonth()}"
+                            th:href="@{/doctor/tickets(dayId=${day.getId()})}"/>
+                    </div>
+                </div>
+                <div th:if="${tickets.get(day).size() == 0}">
+                    <td class="date_has_event">
+                        <div th:text="${day.getDate().getDayOfMonth()}"/>
+                        <div class="events">
+                            <ul>
+                                <li>
+                                    <span class="title">Tickets</span>
+                                    <span class="desc">
+                                        No tickets
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                </div>
+            </div>
+        </div>
+    </tr>
+    <tr>
+        <div th:each="day : ${days5}">
+            <div th:if="${day.getDate().getDayOfWeek().toString() == 'SATURDAY'} or ${day.getDate().getDayOfWeek().toString() == 'SUNDAY'}">
+                <td class="date_has_event" style="background-position: 81px 0px;"
+                    onmouseover="this.style.backgroundPosition='81px -81px';"
+                    onmouseout="this.style.backgroundPosition='81px 0';">
+                    <div th:text="${day.getDate().getDayOfMonth()}"/>
+                    <div class="events">
+                        <ul>
+                            <li>
+                                <span class="title">Day off</span>
+                                <span class="desc">The clinic is not working on this day.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </td>
+            </div>
+            <div th:unless="${day.getDate().getDayOfWeek().toString() == 'SATURDAY'} or ${day.getDate().getDayOfWeek().toString() == 'SUNDAY'}">
+                <div th:unless="${tickets.get(day).size() == 0}">
+                    <div><a th:text="${day.getDate().getDayOfMonth()}"
+                            th:href="@{/doctor/tickets(dayId=${day.getId()})}"/>
+                    </div>
+                </div>
+                <div th:if="${tickets.get(day).size() == 0}">
+                    <td class="date_has_event">
+                        <div th:text="${day.getDate().getDayOfMonth()}"/>
+                        <div class="events">
+                            <ul>
+                                <li>
+                                    <span class="title">Tickets</span>
+                                    <span class="desc">
+                                        No tickets
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                </div>
+            </div>
+        </div>
+        <div th:unless="${end == 0}">
+            <td class="padding" th:colspan="${end}"></td>
+        </div>
+    </tr>
+    </tbody>
+    <tfoot>
+
+    <th>Mon</th>
+    <th>Tue</th>
+    <th>Wed</th>
+    <th>Thu</th>
+    <th>Fri</th>
+    <th>Sat</th>
+    <th>Sun</th>
+    </tfoot>
+</table>
+
+</body>
+
+</html>

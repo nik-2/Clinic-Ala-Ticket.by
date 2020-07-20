@@ -1,0 +1,25 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Clients</title>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/css/doctor.css">
+<!--===============================================================================================-->
+</head>
+<body>
+
+<h3 style="text-align: center; color: #5d58f9; font-size: 40px">Clients Directory</h3>
+<hr>
+
+<table>
+	<tr>
+		<th>Client</th>
+		<th>Client's email</th>
+	</tr>
+	<tr th:each="client : ${clients}">
+		<td th:text="${client.lastName} + ' ' +  ${client.firstName}"/>
+		<td th:text="${client.email}"/>
+	</tr>
+</table>
+
+</body>
+</html>

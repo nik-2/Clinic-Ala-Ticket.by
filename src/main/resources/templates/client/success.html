@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Successful</title>
+</head>
+<body>
+
+<div class="container">
+    <h3>Successful</h3>
+    <hr>
+    <p class="h4 mb-4">Your last ordered ticket</p>
+
+    <div th:object="${ticket}">
+
+        <div style="color: #2e8eef" class="form-control mb-4 col-4">
+            <div style="width: 1000%; display: flex">
+                <div>Ticket number: </div>
+                <div style="color: #ef6169; padding-left: 10px" th:text="${ticket.getId()}"/>
+            </div>
+        </div>
+
+        <div style="color: #2e8eef" class="form-control mb-4 col-4">
+            <div style="width: 1000%; display: flex">
+                <div>Doctor: </div>
+                <div style="color: #ef6169; padding-left: 10px" th:text="${ticket.getDoctor().getLastName()} + ' ' + ${ticket.getDoctor().getFirstName()}"/>
+            </div>
+        </div>
+
+        <div style="color: #2e8eef" class="form-control mb-4 col-4">
+            <div style="width: 1000%; display: flex">
+                <div>Doctor's email: </div>
+                <div style="color: #ef6169; padding-left: 10px" th:text="${ticket.getDoctor().getEmail()}"/>
+            </div>
+        </div>
+
+        <div style="color: #2e8eef" class="form-control mb-4 col-4">
+            <div style="width: 1000%; display: flex">
+                <div>Doctor's speciality: </div>
+                <div style="color: #ef6169; padding-left: 10px" th:text="${ticket.getDoctor().getSpeciality().getName()}"/>
+            </div>
+        </div>
+
+        <div style="color: #2e8eef" class="form-control mb-4 col-4">
+            <div style="width: 1000%; display: flex">
+                <div>Day: </div>
+                <div style="color: #ef6169; padding-left: 10px" th:text="${ticket.getDay().getDate()}"/>
+            </div>
+        </div>
+
+        <div style="color: #2e8eef" class="form-control mb-4 col-4">
+            <div style="width: 1000%; display: flex">
+                <div>Service time: </div>
+                <div style="color: #ef6169; padding-left: 10px" th:text="${ticket.getTime()}"/>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+</body>
+</html>

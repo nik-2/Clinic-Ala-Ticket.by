@@ -1,0 +1,25 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Speciality</title>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/css/speciality.css">
+<!--===============================================================================================-->
+</head>
+<body>
+
+<h3 style="text-align: center; color: #5d58f9; font-size: 40px">Speciality Directory</h3>
+<hr>
+
+<table>
+	<tr>
+		<th>Speciality</th>
+		<th>Selection</th>
+	</tr>
+	<tr th:each="speciality : ${specialities}">
+		<td th:text="${speciality.name}"/>
+		<td><a th:href="@{/client/doctors(id=${speciality.id})}">Select</a> </td>
+	</tr>
+</table>
+
+</body>
+</html>
